@@ -23,3 +23,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ['created', 'updated']
     inlines = [ImageInline, FeatureInline]
 
+@admin.register(Sort)
+class SortAdmin(admin.ModelAdmin):
+    list_display = ['name', 'slug']
+

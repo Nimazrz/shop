@@ -21,7 +21,15 @@
                 {% endfor %}
 
             </ul>
-
+            <ul class="categories">
+                {% for sort in sorts %}
+                    {% if category %}
+                        <a href="{% url 'shop:product_list_by_sort' category.slug sort.slug %}">{{ sort.name }}</a>
+                    {% else %}
+                        <a href="{% url 'shop:product_list_by_sort' sort.slug %}">{{ sort.name }}</a>
+                    {% endif %}
+                {% endfor %}
+            </ul>
         </div>
 
         <div class="large-div">

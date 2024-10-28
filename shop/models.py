@@ -20,6 +20,19 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+class Sort(models.Model):
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=100, unique=True)
+    class Meta:
+         ordering = ['name']
+         indexes=[
+             models.Index(fields=['name'])
+         ]
+    def get_absolute_url(self):
+        return reverse('shop:product_list_by_sort', kwargs={'sort_slug': self.slug})
+
+    def __str__(self):
+        return self.name
 
 
 class Product(models.Model):
