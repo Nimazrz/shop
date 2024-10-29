@@ -59,8 +59,11 @@ class Cart:
         cart_dict = self.cart.copy()
         for product in products:
             cart_dict[str(product.id)]['product'] = product
+            # به‌روزرسانی قیمت اگر تغییر کرده باشد
+            if cart_dict[str(product.id)]['price'] != product.new_price:
+                cart_dict[str(product.id)]['price'] = product.new_price
         for item in cart_dict.values():
-            item['total'] = item['price'] *  item['quantity']
+            item['total'] = item['price'] * item['quantity']
             yield item
 
     def save(self):
