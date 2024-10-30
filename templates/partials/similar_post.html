@@ -1,0 +1,10 @@
+<h2>you might like</h2>
+<div>
+    {% for product in similar_products %}
+        <a href="{% url 'shop:product_detail' product.id product.slug %}" style="color: black">
+            <img style="width: 500px; height: auto" src="{{ product.images.first.image_file.url }}">
+    	    {{ product }}
+        </a>
+    {% endfor %}
+
+</div>

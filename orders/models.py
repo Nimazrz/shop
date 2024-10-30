@@ -17,6 +17,7 @@ class Order(models.Model):
         indexes = [
             models.Index(fields=['-created']),
         ]
+
     def __str__(self):
         return f"order {self.id}"
 
@@ -35,6 +36,8 @@ class Order(models.Model):
     def get_final_cost(self):
         price = self.get_post_cost() + self.get_total_cost()
         return price
+
+
 class Address(models.Model):
     order_related = models.ForeignKey(Order, related_name='address', on_delete=models.CASCADE)
     general_address = models.CharField(max_length=50)
@@ -42,13 +45,13 @@ class Address(models.Model):
     province = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
 
+
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='order_items')
-    price = models.PositiveIntegerField(default=0,)
-    quantity = models.PositiveIntegerField(default=1,)
-    weight = models.PositiveIntegerField(default=0,)
-
+    price = models.PositiveIntegerField(default=0, )
+    quantity = models.PositiveIntegerField(default=1, )
+    weight = models.PositiveIntegerField(default=0, )
 
     def __str__(self):
         return str(self.id)
@@ -58,4 +61,3 @@ class OrderItem(models.Model):
 
     def get_weight(self):
         return self.weight * self.quantity
-
