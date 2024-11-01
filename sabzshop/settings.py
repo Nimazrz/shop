@@ -131,4 +131,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
+#for login and logout
+LOGIN_REDIRECT_URL = '/products/'
+LOGIN_URL = '/login/'
+LOGOUT_URL = '/logout/'
+
+#for reset password
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

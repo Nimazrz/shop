@@ -6,7 +6,7 @@ from .models import ShopUser
 class ShopUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = ShopUser
-        fields = ['phone', 'first_name', 'last_name', 'address', 'is_active', 'is_staff', 'is_superuser']
+        fields = ['phone', 'first_name', 'last_name','email', 'address', 'is_active', 'is_staff', 'is_superuser']
 
 
 

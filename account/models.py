@@ -29,6 +29,7 @@ class ShopUser(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)
     address = models.TextField()
+    email = models.EmailField(unique=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now)

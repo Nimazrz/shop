@@ -9,4 +9,16 @@
             </div>
         </a>
     {% endwith %}
+    {% if not request.user.is_authenticated %}
+        <div style="color: white; margin-left: 40px; margin-top: 10px">
+            <a href="{% url 'shop:login' %}">login</a>
+            <a href="{% url 'shop:register' %}">register</a>
+        </div>
+    {% else %}
+        <div style="color: white; margin-left: 40px; margin-top: 10px">
+            <div>{{ request.user.first_name }}</div>
+            <a href="{% url 'shop:logout' %}">logout</a>
+            <a href="{% url 'shop:password_change' %}">password-change</a>
+        </div>
+    {% endif %}
 </div>
