@@ -10,6 +10,7 @@ urlpatterns = [
     path('products/<slug:category_slug>/sort/<slug:sort_slug>', views.product_list, name='product_list_by_sort'),
     path('product/<int:id>/<slug:slug>/', views.product_detail, name='product_detail'),
 
+    # registers
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', views.loged_out, name='logout'),
     path('register', views.register, name='register'),
@@ -22,5 +23,4 @@ urlpatterns = [
          auth_views.PasswordResetConfirmView.as_view(success_url='/password-reset/complete'),
          name='password_reset_confirm'),
     path('password-reset/complete/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
-
 ]
