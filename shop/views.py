@@ -21,7 +21,7 @@ def product_list(request, category_slug=None, sort_slug=None):
         products = products.order_by(f'{sort.slug}')
 
     # pagination{
-    paginator = Paginator(products, 2)  # Show 2 products per page
+    paginator = Paginator(products, 10)  # Show 2 products per page
     page_number = request.GET.get('page', 1)
     try:
         products = paginator.get_page(page_number)
