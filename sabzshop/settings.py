@@ -140,3 +140,8 @@ LOGOUT_URL = '/logout/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# درگاه پرداخت
+
+MERCHANT = "00000000-0000-0000-0000-000000000000"
+SANDBOX = False
