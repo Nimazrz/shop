@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .forms import *
 from account.models import ShopUser
@@ -54,7 +54,7 @@ def verify_code(request):
                 login(request, user)
                 del request.session['verification_code']
                 del request.session['phone']
-                return redirect('orders:order_create ')
+                return redirect('orders:order_create')
             else:
                 messages.error(request,'invalid code')
 
@@ -160,3 +160,15 @@ def verify(request):
         return HttpResponse('Timeout Error')
     except requests.exceptions.ConnectionError:
         return HttpResponse('Connection Error')
+
+
+def orders_list(request):
+    user = request.user
+    orders = Order.objects.filter(buyer=user)
+    return render(request, 'orders_list.html', {'orders': orders, 'user': user})
+
+
+def order_detail(request, order_id):
+    user = request.user
+    order = get_object_or_404(Order, id=order_id)
+    return render(request, 'order_detail.html', {'order': order, 'user': user})

@@ -16,7 +16,13 @@
         </div>
     {% else %}
         <div style="color: white; margin-left: 40px; margin-top: 10px">
-            <div>{{ request.user.first_name }}</div>
+            <a href="{% url 'orders:orders_list' %}">
+                {% if request.user.first_name %}
+                    <div>{{ request.user.first_name }}</div>
+                {% else %}
+                     <div>{{ request.user.phone }}</div>
+                {% endif %}  
+            </a>  
             <a href="{% url 'shop:logout' %}">logout</a>
             <a href="{% url 'shop:password_change' %}">password-change</a>
         </div>
