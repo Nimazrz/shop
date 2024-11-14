@@ -28,6 +28,7 @@
                     {% else %}
                         <a href="{% url 'shop:product_list_by_sort' sort.slug %}">{{ sort.name }}</a>
                     {% endif %}
+                    <br>
                 {% endfor %}
             </ul>
         </div>
@@ -50,4 +51,4 @@
     
     {% include 'partials/pagination.html' with page=products %}
 
-{% endblock%}
+{% endblock %}
