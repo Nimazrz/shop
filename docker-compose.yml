@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  app:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    image: sabzshop:3.1
+    container_name: magical_heisenberg
+    command: python3 manage.py runserver 0.0.0.0:8000
+    working_dir: /app
