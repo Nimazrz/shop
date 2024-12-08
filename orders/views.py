@@ -16,8 +16,6 @@ import json
 # Create your views here.
 
 
-
-
 def verify_phone(request):
     if request.user.is_authenticated:
         return redirect('orders:order_create')

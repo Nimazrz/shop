@@ -8,6 +8,6 @@ class IsAdminYazd(permissions.BasePermission):
 
 class IsBuyer(permissions.BasePermission):
 
-     def has_objects_permission(self, request, view, obj):
+     def has_object_permission(self, request, view, obj):
           return obj.buyer == request.user
 
